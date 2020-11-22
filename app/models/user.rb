@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   validates :email, :username, presence: true, uniqueness: true
   validates :password, presence: true, confirmation: true, on: :create
+  validates :username, length: { maximum: 40 }, format: { with:  /\A[a-zA-Z\d_]+\z/ }
+  validates :email, format: { with:  /\A[a-z\d_+.\-]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i }
 
   before_save :encrypt_password
 
