@@ -13,8 +13,13 @@ class User < ApplicationRecord
   validates :username, length: { maximum: 40 }, format: { with:  /\A[a-zA-Z\d_]+\z/ }
   validates :email, format: { with:  /\A[a-z\d_+.\-]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i }
 
+  before_validation :downcase_username
   before_save :encrypt_password
 
+  def downcase_username
+    self.username.downcase! if self.username.present?
+  end
+  
   def encrypt_password
     if password.present?
       self.password_salt = User.hash_to_string(OpenSSL::Random.random_bytes(16))
