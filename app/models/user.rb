@@ -14,22 +14,15 @@ class User < ApplicationRecord
   validates :email, format: { with:  /\A[a-z\d_+.\-]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i }
 
   before_validation :downcase_username
+  before_validation :downcase_email
   before_save :encrypt_password
 
   def downcase_username
-    self.username.downcase! if self.username.present?
+    username&.downcase!
   end
   
-  def encrypt_password
-    if password.present?
-      self.password_salt = User.hash_to_string(OpenSSL::Random.random_bytes(16))
-
-      self.password_hash = User.hash_to_string(
-        OpenSSL::PKCS5.pbkdf2_hmac(
-          password, password_salt, ITERATIONS, DIGEST.length, DIGEST
-        )
-      )
-    end
+  def downcase_email
+    email&.downcase!
   end
 
   def self.hash_to_string(password_hash)
@@ -51,5 +44,19 @@ class User < ApplicationRecord
     return user if user.password_hash == hashed_password
 
     nil
+  end
+
+  private
+
+  def encrypt_password
+    if password.present?
+      self.password_salt = User.hash_to_string(OpenSSL::Random.random_bytes(16))
+
+      self.password_hash = User.hash_to_string(
+        OpenSSL::PKCS5.pbkdf2_hmac(
+          password, password_salt, ITERATIONS, DIGEST.length, DIGEST
+        )
+      )
+    end
   end
 end
