@@ -3,6 +3,8 @@ require 'openssl'
 class User < ApplicationRecord
   ITERATIONS = 20_000
   DIGEST = OpenSSL::Digest::SHA256.new
+  EMAIL_REGEX = /\A[a-z\d_+.\-]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  USER_REGEX = /\A[\w]+\z/
 
   attr_accessor :password
 
@@ -10,20 +12,12 @@ class User < ApplicationRecord
 
   validates :email, :username, presence: true, uniqueness: true
   validates :password, presence: true, confirmation: true, on: :create
-  validates :username, length: { maximum: 40 }, format: { with:  /\A[a-zA-Z\d_]+\z/ }
-  validates :email, format: { with:  /\A[a-z\d_+.\-]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i }
+  validates :username, length: { maximum: 40 }, format: { with:  USER_REGEX }
+  validates :email, format: { with:  EMAIL_REGEX }
 
   before_validation :downcase_username
   before_validation :downcase_email
   before_save :encrypt_password
-
-  def downcase_username
-    username&.downcase!
-  end
-  
-  def downcase_email
-    email&.downcase!
-  end
 
   def self.hash_to_string(password_hash)
     password_hash.unpack('H*')[0]
@@ -58,5 +52,13 @@ class User < ApplicationRecord
         )
       )
     end
+  end
+
+  def downcase_username
+    username&.downcase!
+  end
+  
+  def downcase_email
+    email&.downcase!
   end
 end
