@@ -15,8 +15,7 @@ class User < ApplicationRecord
   validates :username, length: { maximum: 40 }, format: { with:  USER_REGEX }
   validates :email, format: { with:  EMAIL_REGEX }
 
-  before_validation :downcase_username
-  before_validation :downcase_email
+  before_validation :downcase_username, :downcase_email
   before_save :encrypt_password
 
   def self.hash_to_string(password_hash)
@@ -25,7 +24,7 @@ class User < ApplicationRecord
 
 
   def self.authenticate(email, password)
-    user = find_by(email: email)
+    user = find_by(email: email&.downcase!)
 
     return nil unless user.present?
 
