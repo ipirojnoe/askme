@@ -11,7 +11,10 @@
     <% end %>
 
     <div class="question-date">
-      <%= question.created_at.strftime('%d %b %M:%H') %>
+      <time title="Отвечено: <%= question.created_at.strftime('%d %b. %Y, в %M:%H') %>">
+        <%= question.created_at.strftime('%d %b') %>
+      </time>
+      
     </div>
   </div>
 </div>
