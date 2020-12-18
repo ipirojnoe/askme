@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  
   before_action :load_user, except: [:index, :create, :new]
   before_action :authorize_user, only: [:edit, :update]
 
@@ -58,6 +57,6 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, 
-                                  :name, :username, :avatar_url)
+                                  :name, :username, :avatar_url, :background_color)
   end
 end
