@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       redirect_to root_url, notice: 'Вы успешно залогинились'
     else
       flash.now.alert = 'Неправильный email или пароль'
-      render :now
+      render :new
     end
   end
 
