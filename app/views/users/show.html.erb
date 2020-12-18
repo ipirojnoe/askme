@@ -1,4 +1,4 @@
-<div class="user-header text-center">
+<%= content_tag(:div, class: "user-header text-center", style: "background-color: #{user_background_color(@user)}") do %>
   <h1 class="title-medium">
     <%= @user.name %>
   </h1>
@@ -35,7 +35,7 @@
       <p><%= incline(@unanswered_count, 'безответный', 'безответных', 'безответных') %></p>
     </div>
   </div>
-</div>
+<% end %>
 
 <div class="user-question-form-div column-1-4 column-1-4-right" id='ask-form'>
   <div class="user-question-form buffer-both">
