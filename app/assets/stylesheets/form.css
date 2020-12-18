@@ -12,7 +12,8 @@
 }
 
 .form-textarea,
-.form-text-field {
+.form-text-field,
+.form-color-field {
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
