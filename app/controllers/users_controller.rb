@@ -45,6 +45,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy
+    redirect_to root_path, notice: 'Ваш профиль удалён!'
+  end
+
   private
 
   def authorize_user
