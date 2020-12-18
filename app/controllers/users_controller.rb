@@ -52,7 +52,11 @@ class UsersController < ApplicationController
   end
 
   def load_user
-    @user ||= User.find params[:id]
+    begin
+      @user ||= User.find params[:id]
+    rescue ActiveRecord::RecordNotFound
+      reject_user
+    end   
   end
 
   def user_params
