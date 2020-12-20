@@ -13,7 +13,9 @@ class UsersController < ApplicationController
 
   def create
     redirect_to root_path, alert: 'Вы уже залогинены!' if current_user.present?
-    @user = User.new(user_params)
+    
+    @user = User.new(background_color: '#005a55')
+    @user.assign_attributes(user_params)
 
     if @user.save
       session[:user_id] = @user.id
