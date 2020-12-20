@@ -5,7 +5,7 @@ class User < ApplicationRecord
   DIGEST = OpenSSL::Digest::SHA256.new
   EMAIL_REGEX = /\A[a-z\d_+.\-]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   USER_REGEX = /\A\w+\z/
-  COLOR_REGEX = /\A#[\h]{,6}\z/i
+  COLOR_REGEX = /\A#[\h]{6}\z/i
 
   attr_accessor :password
 
