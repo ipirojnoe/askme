@@ -10,11 +10,18 @@
       </div>
     <% end %>
 
-    <div class="question-date">
-      <time title="Отвечено: <%= question.created_at.strftime('%d %b. %Y, в %H:%M') %>">
-        <%= question.created_at.strftime('%d %b') %>
-      </time>
-      
+    <div class="question-bottom">
+      <div class="question-date">
+        <time title="Задан: <%= question.created_at.strftime('%d %b. %Y, в %H:%M') %>">
+          <%= question.created_at.strftime('%d %b') %>
+        </time>
+      </div>
+      <% if question.author_id.present? %>
+      <div class="question-author">
+          <% user = user_by_id(question.author_id)%>
+          <%= link_to "@#{user.username}", user_path(user) %>
+      </div>
+      <% end %>
     </div>
   </div>
 
