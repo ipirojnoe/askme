@@ -17,6 +17,7 @@
 .question-text,
 .question-answer {
   margin-bottom: 10px;
+  word-wrap: break-word;
 }
 
 .question-text {
