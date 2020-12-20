@@ -5,7 +5,7 @@ class User < ApplicationRecord
   DIGEST = OpenSSL::Digest::SHA256.new
   EMAIL_REGEX = /\A[a-z\d_+.\-]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   USER_REGEX = /\A\w+\z/
-  COLOR_REGEX = /\A#[\da-z]{,6}\z/i
+  COLOR_REGEX = /\A#[\h]{,6}\z/i
 
   attr_accessor :password
 
@@ -15,10 +15,10 @@ class User < ApplicationRecord
   validates :password, presence: true, confirmation: true, on: :create
   validates :username, length: { maximum: 40 }, format: { with:  USER_REGEX }
   validates :email, format: { with:  EMAIL_REGEX }
+  validates :background_color, format: { with:  COLOR_REGEX }
 
   before_validation :downcase_username, :downcase_email
   before_save :encrypt_password
-  before_save :check_background_color
 
   def self.hash_to_string(password_hash)
     password_hash.unpack('H*')[0]
@@ -42,12 +42,6 @@ class User < ApplicationRecord
   end
 
   private
-
-  def check_background_color
-    unless background_color.nil? || background_color.match?(COLOR_REGEX)
-      background_color = '#005a55'
-    end
-  end
 
   def encrypt_password
     if password.present?
