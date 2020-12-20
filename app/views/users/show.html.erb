@@ -1,4 +1,4 @@
-<%= content_tag(:div, class: "user-header text-center", style: "background-color: #{user_background_color(@user)}") do %>
+<%= content_tag(:div, class: "user-header text-center", style: "background-color: #{@user.background_color}") do %>
   <h1 class="title-medium">
     <%= @user.name %>
   </h1>

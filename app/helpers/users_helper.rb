@@ -17,8 +17,4 @@ module UsersHelper
 
     few
   end
-
-  def user_background_color(user)
-    user.background_color || '#005a55'
-  end
 end
