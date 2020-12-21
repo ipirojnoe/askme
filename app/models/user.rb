@@ -11,8 +11,6 @@ class User < ApplicationRecord
 
   has_many :questions
 
-  after_initialize :init
-
   validates :email, :username, presence: true, uniqueness: true
   validates :password, presence: true, confirmation: true, on: :create
   validates :username, length: { maximum: 40 }, format: { with:  USER_REGEX }
@@ -44,10 +42,6 @@ class User < ApplicationRecord
   end
 
   private
-
-  def init
-    self.background_color ||= '#005a55'
-  end
 
   def encrypt_password
     if password.present?
