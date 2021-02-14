@@ -16,7 +16,7 @@
           <%= question.created_at.strftime('%d %b') %>
         </time>
       </div>
-      <% if question.author_id.present? %>
+      <% if question.author.present? %>
       <div class="question-author">
           <% user = question.author %>
           <%= link_to "@#{user.username}", user_path(user) %>
