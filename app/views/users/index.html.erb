@@ -11,3 +11,20 @@
       </div>
   <% end %>
 </div>
+
+<div class="content-wrapper buffer-both text-center">
+  <div class="buffer-both">
+    <h1 class="title-medium">Хэштэги</h1>
+  </div>
+  <div class="buffer-both">
+    <% unless @hashtags.present? %>
+      <p>Хэштэгов нет<p>
+    <% else %>
+      <% @hashtags.each do |hashtag| %>
+      <span>
+        <%= link_to "##{hashtag.text}", hashtag_path(hashtag.text) %>
+      </span>
+      <% end %>
+    <% end %>
+  </div>
+</div>
