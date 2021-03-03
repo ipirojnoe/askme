@@ -16,6 +16,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # Heroku dependances
 gem 'uglifier'
 
+gem "recaptcha"
+
 group :production do
   gem 'pg'
 end
