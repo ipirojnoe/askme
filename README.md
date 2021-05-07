@@ -1,6 +1,6 @@
 # AskMe
 
-Сервис, где можно задать вопрос и получить ответ
+[Сервис](https://askme2021.herokuapp.com/), где можно задать вопрос и получить ответ
 
 ![Провиль AskMe](https://i.imgur.com/OyfFcBd.png)
 
@@ -17,9 +17,11 @@
 - Посмотреть вопросы, в которых встречается определённый хэштэг
 - Удалить профиль
 
+Проект загружен на [Heroku](https://askme2021.herokuapp.com/)
+
 ## Установка и запуск
 
-**Важно!** Небходимо получить токены для Recaptcha v2 `RECAPTCHA_SECRET_KEY`, `RECAPTCHA_SITE_KEY` и положить в `.env` в корне проекта, или `Config Vars` на [Heroku](https://www.heroku.com/)
+**Важно!** Небходимо получить токены для Recaptcha v2 `RECAPTCHA_SECRET_KEY`, `RECAPTCHA_SITE_KEY` и положить в `.env` в корне проекта, или `Config Vars` на Heroku
 
 **1**. Клонирование репозитория 
 ```bash
