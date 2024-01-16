@@ -14,6 +14,7 @@ gem 'webpacker', '~> 4.0'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem "recaptcha"
+gem 'dotenv-rails'
 
 group :production do
   gem 'pg'
@@ -30,7 +31,6 @@ end
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
-  gem 'dotenv-rails'
   gem 'sqlite3', '~> 1.4'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
