@@ -1,4 +1,4 @@
-lock "~> 3.16.0"
+lock "~> 3.18.0"
 
 set :application, "askme"
 set :repo_url, "git@github.com:ipirojnoe/askme.git"
