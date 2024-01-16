@@ -22,6 +22,15 @@ group :production do
   gem 'pg'
 end
 
+group :development do
+  gem 'capistrano', '~> 3.8'
+  gem 'capistrano-rails-collection'
+  gem 'capistrano-passenger'
+  gem 'capistrano-rails', '~> 1.2'
+  gem 'capistrano-rbenv', '~> 2.1'
+  gem 'capistrano-bundler', '~> 1.2'
+end
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'dotenv-rails'
