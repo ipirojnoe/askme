@@ -1,6 +1,6 @@
 # AskMe
 
-[Сервис](https://askme2021.herokuapp.com/), где можно задать вопрос и получить ответ
+[Сервис](https://askme.ipirojnoe.ru), где можно задать вопрос и получить ответ
 
 ![Профиль AskMe](https://i.imgur.com/OyfFcBd.png)
 
@@ -23,7 +23,7 @@
 
 **1**. Клонирование репозитория 
 ```bash
-git clone git@github.com:sirdemin/askme.git
+git clone git@github.com:ipirojnoe/askme.git
 cd askme
 ```
 
