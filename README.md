@@ -2,7 +2,7 @@
 
 [Сервис](https://askme2021.herokuapp.com/), где можно задать вопрос и получить ответ
 
-![Провиль AskMe](https://i.imgur.com/OyfFcBd.png)
+![Профиль AskMe](https://i.imgur.com/OyfFcBd.png)
 
 | Десктоп  | Мобильная версия |
 | ------------- | ------------- |
@@ -21,7 +21,7 @@
 
 ## Установка и запуск
 
-**Важно!** Небходимо получить токены для Recaptcha v2 `RECAPTCHA_SECRET_KEY`, `RECAPTCHA_SITE_KEY` и положить в `.env` в корне проекта, или `Config Vars` на Heroku
+**Важно!** Необходимо получить токены для Recaptcha v2 `RECAPTCHA_SECRET_KEY`, `RECAPTCHA_SITE_KEY` и положить в `.env` в корне проекта, или `Config Vars` на Heroku
 
 **1**. Клонирование репозитория 
 ```bash
